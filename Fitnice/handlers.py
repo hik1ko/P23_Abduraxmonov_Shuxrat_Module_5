@@ -34,7 +34,7 @@ Bu bo'timiz sizga kunlik qiladigan 🏋️ mashqlarni ko'rsatib beradi""", reply
 async def main_page_handler(message: Message, state: FSMContext, session: Session) -> None:
     if message.text == 'NewsPost 📄':
         soup = beautiful_soup('https://www.fitnessblender.com/')
-        rows = soup.find_all('div', {"class": 'title-card-group'})
+        rows = soup.find_all('div', {'class': 'group'})[1:-1]
         for row in rows:
             await message.answer(row.text)
     elif message.text == 'Filial 📍':

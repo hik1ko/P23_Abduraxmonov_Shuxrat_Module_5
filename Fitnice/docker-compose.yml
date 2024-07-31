@@ -5,15 +5,14 @@ services:
   bot:
     build: .
     restart: always
-    container_name: Fitness_bot_con
+    container_name: FitNice_bot_by_me
     environment:
-      TOKEN: 7149796467:AAF-Dcj2_vEr5E_UGhVG3UBViU-AnonEC5Q
+      TOKEN: 7037879367:AAG0ISCCehaD3XKZT8K6Ka7D0Rk-w14gS_0
       DB_USER: postgres
       DB_NAME: postgres
       DB_HOST: pg
       DB_PORT: 5432
       DB_PASSWORD: 1
-      PAYMENT_CLICK_TOKEN: 398062629:TEST:999999999_F91D8F69C042267444B74CC0B3C747757EB0E065
 
     depends_on:
       - pg
