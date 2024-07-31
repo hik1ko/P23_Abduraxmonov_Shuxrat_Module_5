@@ -12,6 +12,7 @@ from Fitnice.middlewares import CustomMiddleware
 TOKEN = "7037879367:AAG0ISCCehaD3XKZT8K6Ka7D0Rk-w14gS_0"
 
 #https://t.me/asfbaksbot token qoyilgan botni linki
+# Docker hubga yuklolmadim, eski proyektlarni kodini copy qilib qoydim faqat.
 
 
 dp = Dispatcher()
