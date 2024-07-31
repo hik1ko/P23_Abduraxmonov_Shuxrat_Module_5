@@ -40,13 +40,13 @@ async def main_page_handler(message: Message, state: FSMContext, session: Sessio
     elif message.text == 'Filial 📍':
         await message.answer_location(latitude=41.3048225634428, longitude=69.25289279629752)
     elif message.text == 'Admin 👨🏻‍💻':
-        await message.answer("https://t.me/Absaitov_Dilshod")
+        await message.answer("https://t.me/eleutheeria")
     elif message.text == 'Start ✅':
-        await state.set_state(FitnesState.male_female)
+        await state.set_state(FitnesState.male)
         await message.answer("Iltimos, quyidagilardan birini tanlang!", reply_markup=male_female_btn())
 
 
-@main_router.message(FitnesState.male_female)
+@main_router.message(FitnesState.male)
 async def main_page_handler(message: Message, state: FSMContext, session: Session) -> None:
     if message.text == 'Back 🔙':
         await state.set_state(FitnesState.main_page)
@@ -57,13 +57,14 @@ async def main_page_handler(message: Message, state: FSMContext, session: Sessio
         await state.set_state(FitnesState.month)
         await message.answer("Iltimos, oy raqamini tanlang!", reply_markup=months_btn())
     elif message.text == 'Woman 🤵‍♀️':
-        await message.answer("Womanga vaqt yetmadi")
+        await state.set_state(FitnesState.month)
+        await message.answer("Iltimos, oy raqamini tanlang!", reply_markup=months_btn())
 
 
 @main_router.message(FitnesState.month)
-async def main_page_handler(message: Message, state: FSMContext, session: Session) -> None:
+async def main_page_handler(message: Message, state: FSMContext) -> None:
     if message.text == 'Back 🔙':
-        await state.set_state(FitnesState.male_female)
+        await state.set_state(FitnesState.male)
         await message.answer("Iltimos, quyidagilardan birini tanlang!", reply_markup=male_female_btn())
     elif message.text == '1-oy':
         await state.set_state(FitnesState.weekdays_1)

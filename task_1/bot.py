@@ -63,7 +63,7 @@ async def command_start_handler(message: Message) -> None:
     await message.answer(f"Hello, {html.bold(message.from_user.full_name)}!", reply_markup=email_btn())
 
 
-@main_router.callback_query(F.data == 'email')
+@main_router.callback_query(F.data == 'email' or F.text.startwith('email'))
 async def mail_receiver(message: Message, state: FSMContext):
     await state.set_state(EmailState.email)
     await bot.send_chat_action(chat_id=message.from_user.id, action="typing")
@@ -85,6 +85,7 @@ async def text_message(message: Message, state: FSMContext):
     await mail_sender(rcv_address, txt_mail, message_bot=message)
     await message.answer('mail sent successfully')
     await state.clear()
+    await message.answer(f"If you want to send another mail", reply_markup=email_btn())
 
 
 async def main() -> None:

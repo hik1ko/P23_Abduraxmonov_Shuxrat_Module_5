@@ -59,6 +59,9 @@ def week_days_btn():
             KeyboardButton(text='Payshanba'),
             KeyboardButton(text='️Juma'),
             KeyboardButton(text='️Shanba'),
+        ],
+        [
+            KeyboardButton(text='Back 🔙'),
         ]
     ]
 
